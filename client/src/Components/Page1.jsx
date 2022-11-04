@@ -46,18 +46,46 @@ const Page1 = ({ handleNext }) => {
   };
   const handleLocation = (e) => {
     // setLocation(e.target.value);
-    axios.get("https://ipapi.co/json?token=45420d190496ea").then((response) => {
-      let city = response.data.city;
-      let region = response.data.region;
-      let pincode = response.data.postal;
-      let country_name = response.data.country_name;
+    // axios.get("https://ipapi.co/json?token=45420d190496ea").then((response) => {
+    //   let city = response.data.city;
+    //   let region = response.data.region;
+    //   let pincode = response.data.postal;
+    //   let country_name = response.data.country_name;
 
-      localStorage.setItem("pincode", JSON.stringify(pincode));
-      localStorage.setItem("text", JSON.stringify(region));
+    //   localStorage.setItem("pincode", JSON.stringify(pincode));
+    //   localStorage.setItem("text", JSON.stringify(region));
 
-      let text = document.getElementById("location");
-      text.value = city + "," + region + "," + pincode + "," + country_name;
-    });
+    //   text.value = city + "," + region + "," + pincode + "," + country_name;
+    // });
+
+    const sucess = (pos) => {
+      console.log(pos);
+      const lat = pos.coords.latitude;
+      const lon = pos.coords.longitude;
+
+      const geoApiUrl = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude${lat}=&longitude=${lon}&localityLanguage=en`;
+      fetch(geoApiUrl)
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          let text = document.getElementById("location");
+          let city = data.city;
+          let mandal = data.locality;
+          let state = data.principalSubdivision;
+          let country = data.countryName;
+          let pincode = data.postcode;
+          text.value =
+            city + "," + mandal + "," + state + "," + country + "," + pincode;
+          let val=document.getElementById("location").value
+          localStorage.setItem("pincode", JSON.stringify(pincode));
+          localStorage.setItem("text", JSON.stringify(val));
+        });
+    };
+
+    const error = () => {
+      console.log("unable to fetch the location");
+    };
+    navigator.geolocation.getCurrentPosition(sucess, error);
   };
 
   const handleContinue = (e) => {

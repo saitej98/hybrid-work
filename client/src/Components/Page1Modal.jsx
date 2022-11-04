@@ -77,7 +77,6 @@ export default function Page1Modal(props) {
             </button>
             <button className="button2">CONFIRM</button>
           </div>
-          {/* <Button onClick={handleOpen}>Open modal</Button> */}
         </div>
       </DialogContent>
     </Dialog>
