@@ -67,16 +67,26 @@ const Page1 = ({ handleNext }) => {
       fetch(geoApiUrl)
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
           let text = document.getElementById("location");
           let city = data.city;
           let mandal = data.locality;
           let state = data.principalSubdivision;
           let country = data.countryName;
+
+          // axios.get(`https://api.postalpincode.in/${city}`).then(
+          //   (res) => {
+          //   return  console.log(res);
+          //   }
+          // );
+          // axios.get(`https://app.zipcodebase.com/api/v1/code/${city}?apikey=bb988b80-5c14-11ed-a3ff-53ebe889ba62&city=Amsterdam&state_name=Noord-Holland&country=${country}`).then(
+          //   (res) => {
+          //     console.log(res);
+          //   }
+          // );
           let pincode = data.postcode;
           text.value =
             city + "," + mandal + "," + state + "," + country + "," + pincode;
-          let val=document.getElementById("location").value
+          let val = document.getElementById("location").value;
           localStorage.setItem("pincode", JSON.stringify(pincode));
           localStorage.setItem("text", JSON.stringify(val));
         });
