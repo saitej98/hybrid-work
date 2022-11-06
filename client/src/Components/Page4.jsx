@@ -203,8 +203,7 @@ const Page4 = ({ handleBack }) => {
                 <input type="file" id="file-1" accept="image/*" />
                 <label for="file-1" id="file-1-preview">
                   <img src="https://bit.ly/3ubuq5o" alt="" />
-                  <div>
-                  </div>
+                  <div></div>
                 </label>
               </div>
               <br />
@@ -212,8 +211,7 @@ const Page4 = ({ handleBack }) => {
                 <input type="file" id="file-2" accept="image/*" />
                 <label for="file-2" id="file-2-preview">
                   <img src="https://bit.ly/3ubuq5o" alt="" />
-                  <div>
-                  </div>
+                  <div></div>
                 </label>
               </div>
             </div>
