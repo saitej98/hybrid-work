@@ -1,11 +1,8 @@
 import React from "react";
 import { Dialog, DialogContent, DialogTitle } from "@mui/material";
-
 import { useNavigate } from "react-router-dom";
-import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import Modal from "@mui/material/Modal";
 
 export default function Page1Modal(props) {
   const navigate = useNavigate();

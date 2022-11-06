@@ -5,9 +5,7 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
-import { Route, Routes } from "react-router-dom";
-import Page1 from "./Components/Page1";
-import Page2 from "./Components/Page2";
+
 
 function App() {
   const externalImage =
