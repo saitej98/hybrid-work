@@ -1,17 +1,17 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Stepper from '@mui/material/Stepper';
-import Step from '@mui/material/Step';
-import StepLabel from '@mui/material/StepLabel';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Page1 from './Page1';
-import Page2 from './Page2';
-import Page3 from './Page3';
-import Page4 from './Page4';
-import Thankyou from './Thankyou';
+import * as React from "react";
+import Box from "@mui/material/Box";
+import Stepper from "@mui/material/Stepper";
+import Step from "@mui/material/Step";
+import StepLabel from "@mui/material/StepLabel";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import Page1 from "./Page1";
+import Page2 from "./Page2";
+import Page3 from "./Page3";
+import Page4 from "./Page4";
+import Thankyou from "./Thankyou";
 
-const steps = ['', '', '', '',''];
+const steps = ["", "", "", "", ""];
 
 export default function HorizontalLinearStepper() {
   const [activeStep, setActiveStep] = React.useState(0);
@@ -31,7 +31,7 @@ export default function HorizontalLinearStepper() {
       newSkipped = new Set(newSkipped.values());
       newSkipped.delete(activeStep);
     }
-    
+
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
     setSkipped(newSkipped);
   };
@@ -60,16 +60,24 @@ export default function HorizontalLinearStepper() {
   };
 
   return (
-    <Box sx={{ width: '100%' }}>
-      <Stepper activeStep={activeStep} style={{border:'', width:'650px',marginLeft:'120px',padding:'20px 75px ',}}>
+    <Box sx={{ width: "100%" }}>
+      <Stepper
+        activeStep={activeStep}
+        style={{
+          border: "",
+          width: "650px",
+          marginLeft: "120px",
+          padding: "20px 75px ",
+        }}
+      >
         {steps.map((label, index) => {
           const stepProps = {};
           const labelProps = {};
-        //   if (isStepOptional(index)) {
-        //     labelProps.optional = (
-        //       <Typography variant="caption">Optional</Typography>
-        //     );
-        //   }
+          //   if (isStepOptional(index)) {
+          //     labelProps.optional = (
+          //       <Typography variant="caption">Optional</Typography>
+          //     );
+          //   }
           if (isStepSkipped(index)) {
             stepProps.completed = false;
           }
@@ -85,8 +93,8 @@ export default function HorizontalLinearStepper() {
           <Typography sx={{ mt: 2, mb: 1 }}>
             All steps completed - you&apos;re finished
           </Typography>
-          <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
-            <Box sx={{ flex: '1 1 auto' }} />
+          <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
+            <Box sx={{ flex: "1 1 auto" }} />
             <Button onClick={handleReset}>Reset</Button>
           </Box>
         </React.Fragment>
@@ -95,12 +103,11 @@ export default function HorizontalLinearStepper() {
           {/* <Typography sx={{ mt: 2, mb: 1 }}>Step {activeStep + 1}</Typography> */}
           {activeStep === 0 && <Page1 handleNext={handleNext} />}
           {activeStep === 1 && <Page2 handleNext={handleNext} />}
-          {activeStep === 2 && <Page3 handleNext={handleNext}/>}
-          {activeStep === 3 && <Page4 handleBack={handleBack}/>}
-          {activeStep === 4 && <Thankyou/>}
+          {activeStep === 2 && <Page3 handleNext={handleNext} />}
+          {activeStep === 3 && <Page4 handleBack={handleBack} />}
+          {activeStep === 4 && <Thankyou />}
 
-
-          <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
+          <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
             <Button
               color="inherit"
               disabled={activeStep === 0}
@@ -109,7 +116,7 @@ export default function HorizontalLinearStepper() {
             >
               Back
             </Button>
-            <Box sx={{ flex: '1 1 auto' }} />
+            <Box sx={{ flex: "1 1 auto" }} />
             {isStepOptional(activeStep) && (
               <Button color="inherit" onClick={handleSkip} sx={{ mr: 1 }}>
                 Skip
@@ -117,8 +124,7 @@ export default function HorizontalLinearStepper() {
             )}
 
             <Button onClick={handleNext}>
-              
-              {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+              {activeStep === steps.length - 1 ? "Finish" : "Next"}
             </Button>
           </Box>
         </React.Fragment>
